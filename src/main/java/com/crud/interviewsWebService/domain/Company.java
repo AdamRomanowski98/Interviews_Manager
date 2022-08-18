@@ -6,8 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,33 +24,44 @@ public class Company {
     private Long id;
 
     @NotNull
+    @Column(name= "Company name")
     private String name;
 
     @NotNull
+    @Column(name= "Localization")
     private String localization;
 
+    @Column(name= "Minimum salary")
     private double fromSalary;
 
+    @Column(name= "Maximum salary")
     private double toSalary;
 
+    @Column(name= "Type of contract")
     private String typeOfContract;
 
     @ElementCollection
     @NotNull
-    @CollectionTable(name="Must_Have",
+    @CollectionTable(name="Must have",
     joinColumns = @JoinColumn(name = "companies_id"))
-    @Column(name="Mandatory_Skills")
-    private List<String> mustHaveTechnologies = new ArrayList<>();
+    @Column(name="Mandatory skills")
+    private Set<String> mustHaveTechnologies = new HashSet<>();
 
     @ElementCollection
-    @CollectionTable(name="Nice_To_Have",
+    @CollectionTable(name="Nice to have",
     joinColumns = @JoinColumn(name="companies_id"))
-    @Column(name="Nice_To_Have_Skills")
-    private List<String> niceToHaveTechnologies = new ArrayList<>();
+    @Column(name="Nice to have skills")
+    private Set<String> niceToHaveTechnologies = new HashSet<>();
 
     @NotNull
+    @Column(name= "Did they answer?")
     private boolean answered;
 
+    @Column(name= "Interview description")
     private String interviewDescription;
+
+    @NotNull
+    @Column(name = "Date of interview")
+    private LocalDate dateOfInterview;
 
 }

@@ -29,6 +29,10 @@ public class DbService {
         return companyRepository.save(company);
     }
 
+    public List<Company> getCompaniesByAnswered(boolean answered){
+        return companyRepository.findCompaniesByAnswered(answered);
+    }
+
     public void deleteCompanyById(final Long id){
         companyRepository.deleteById(id);
     }

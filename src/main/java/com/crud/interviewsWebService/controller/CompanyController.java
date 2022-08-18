@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -47,6 +48,26 @@ public class CompanyController {
     public ResponseEntity<Void> saveCompany(@RequestBody CompanyDto companyDto){
         Company company = companyMapper.mapToCompany(companyDto);
         dbService.saveCompany(company);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "answered/{companyAnswered}")
+    public ResponseEntity<List<CompanyDto>> getCompaniesByAnswered(@PathVariable boolean companyAnswered){
+        List<Company> companies = dbService.getCompaniesByAnswered(companyAnswered);
+        return ResponseEntity.ok(companyMapper.mapToCompanyDtoList(companies));
+    }
+
+    @PutMapping
+    public ResponseEntity<CompanyDto> updateCompany(@RequestBody CompanyDto companyDto){
+        Company company = companyMapper.mapToCompany(companyDto);
+        Company newCompany = dbService.saveCompany(company);
+        return ResponseEntity.ok(companyMapper.mapToCompanyDto(newCompany));
+    }
+
+
+    @DeleteMapping(value= "{companyId}")
+    public ResponseEntity<Void> deleteCompany(@PathVariable Long companyId){
+        dbService.deleteCompanyById(companyId);
         return ResponseEntity.ok().build();
     }
 

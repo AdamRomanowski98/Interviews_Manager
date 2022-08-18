@@ -21,7 +21,8 @@ public class CompanyMapper {
                 companyDto.getMustHaveTechnologies(),
                 companyDto.getNiceToHaveTechnologies(),
                 companyDto.isAnswered(),
-                companyDto.getInterviewDescription()
+                companyDto.getInterviewDescription(),
+                companyDto.getDateOfInterview()
         );
     }
 
@@ -36,7 +37,8 @@ public class CompanyMapper {
                 company.getMustHaveTechnologies(),
                 company.getNiceToHaveTechnologies(),
                 company.isAnswered(),
-                company.getInterviewDescription()
+                company.getInterviewDescription(),
+                company.getDateOfInterview()
         );
     }
 
