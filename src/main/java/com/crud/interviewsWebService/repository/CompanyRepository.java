@@ -4,6 +4,7 @@ import com.crud.interviewsWebService.domain.Company;
 import com.crud.interviewsWebService.domain.CompanyDto;
 import org.hibernate.Criteria;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-public interface CompanyRepository extends CrudRepository<Company, Long> {
-
-
+public interface CompanyRepository extends JpaRepository<Company, Long> {
     List<Company> findAll();
     List<Company> findByName(String name);
     List<Company> findByLocalization(String localization);

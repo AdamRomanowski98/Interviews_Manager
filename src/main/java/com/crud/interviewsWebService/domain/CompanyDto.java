@@ -19,9 +19,9 @@ public class CompanyDto {
 
     private String localization;
 
-    private double fromSalary;
+    private Double fromSalary;
 
-    private double toSalary;
+    private Double toSalary;
 
     private String typeOfContract;
 
@@ -29,7 +29,7 @@ public class CompanyDto {
 
     private Set<String> niceToHaveTechnologies;
 
-    private boolean answered;
+    private Boolean answered;
 
     private String interviewDescription;
 

@@ -32,10 +32,10 @@ public class Company {
     private String localization;
 
     @Column(name= "Minimum salary")
-    private double fromSalary;
+    private Double fromSalary;
 
     @Column(name= "Maximum salary")
-    private double toSalary;
+    private Double toSalary;
 
     @Column(name= "Type of contract")
     private String typeOfContract;
@@ -55,7 +55,7 @@ public class Company {
 
     @NotNull
     @Column(name= "Did they answer?")
-    private boolean answered;
+    private Boolean answered;
 
     @Column(name= "Interview description")
     private String interviewDescription;
@@ -64,4 +64,20 @@ public class Company {
     @Column(name = "Date of interview")
     private LocalDate dateOfInterview;
 
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", localization='" + localization + '\'' +
+                ", fromSalary=" + fromSalary +
+                ", toSalary=" + toSalary +
+                ", typeOfContract='" + typeOfContract + '\'' +
+                ", mustHaveTechnologies=" + mustHaveTechnologies +
+                ", niceToHaveTechnologies=" + niceToHaveTechnologies +
+                ", answered=" + answered +
+                ", interviewDescription='" + interviewDescription + '\'' +
+                ", dateOfInterview=" + dateOfInterview +
+                '}';
+    }
 }

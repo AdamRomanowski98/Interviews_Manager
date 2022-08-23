@@ -20,7 +20,7 @@ public class CompanyMapper {
                 companyDto.getTypeOfContract(),
                 companyDto.getMustHaveTechnologies(),
                 companyDto.getNiceToHaveTechnologies(),
-                companyDto.isAnswered(),
+                companyDto.getAnswered(),
                 companyDto.getInterviewDescription(),
                 companyDto.getDateOfInterview()
         );
@@ -36,7 +36,7 @@ public class CompanyMapper {
                 company.getTypeOfContract(),
                 company.getMustHaveTechnologies(),
                 company.getNiceToHaveTechnologies(),
-                company.isAnswered(),
+                company.getAnswered(),
                 company.getInterviewDescription(),
                 company.getDateOfInterview()
         );

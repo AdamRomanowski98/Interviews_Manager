@@ -65,15 +65,11 @@ public class CompanyController {
         return ResponseEntity.ok(companyMapper.mapToCompanyDto(newCompany));
     }
 
-    @GetMapping("filter")
-    public ResponseEntity<List<CompanyDto>> getCompaniesWithFilters(@RequestParam(value = "name", required= false) String name, @RequestParam(value = "localization", required= false) String localization,
-                                                                    @RequestParam(value = "fromSalary", required= false) double fromSalary, @RequestParam(value = "toSalary", required= false) Double toSalary,
-                                                                    @RequestParam(value = "typeOfContract", required= false) String typeOfContract, @RequestParam(value = "mustHaveTechnologies", required= false) Set<String> mustHaveTechnologies,
-                                                                    @RequestParam(value = "niceToHaveTechnologies", required= false) Set<String> niceToHaveTechnologies, @RequestParam(value = "answered", required= false) Boolean answered,
-                                                                    @RequestParam(value = "interviewDescription", required= false) String interviewDescription, @RequestParam(value = "dateOfInterview", required= false)LocalDate dateOfInterview){
 
-        Specification<Company> specification = dbService.getSpec(name, localization, fromSalary, toSalary, typeOfContract, mustHaveTechnologies, niceToHaveTechnologies, answered, interviewDescription, dateOfInterview);
-        return ResponseEntity.ok(companyMapper.mapToCompanyDtoList(dbService.getFiltered(specification)));
+    @GetMapping("filter")
+    public ResponseEntity<List<CompanyDto>> getCompaniesWithFilters(@RequestBody Company company){
+        Specification<Company> companies = dbService.getSpec(company);
+        return ResponseEntity.ok(companyMapper.mapToCompanyDtoList(dbService.getFiltered(companies)));
     }
 
 
