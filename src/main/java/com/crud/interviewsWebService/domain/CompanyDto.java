@@ -35,4 +35,5 @@ public class CompanyDto {
 
     private LocalDate dateOfInterview;
 
+
 }

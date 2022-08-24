@@ -6,9 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -61,15 +63,15 @@ public class DbService {
             if(company.getTypeOfContract() != null && !(company.getTypeOfContract().isEmpty())){
                 predicates.add(criteriaBuilder.like(root.get("typeOfContract"), "%" + company.getTypeOfContract() + "%"));
             }
-            if(company.getMustHaveTechnologies() != null && !(company.getMustHaveTechnologies().isEmpty())){
-                predicates.add(criteriaBuilder.like(root.get("mustHaveTechnologies"), "%" +company.getMustHaveTechnologies() + "%"));
-            }
-
 //            if(company.getMustHaveTechnologies() != null && !(company.getMustHaveTechnologies().isEmpty())){
-//                for(String skill : company.getMustHaveTechnologies()){
-//                    predicates.add(criteriaBuilder.equal(root.get("mustHaveTechnologies"), skill));
-//                }
+//                predicates.add(criteriaBuilder.like(root.get("mustHaveTechnologies"), "%" +company.getMustHaveTechnologies() + "%"));
 //            }
+
+            if(company.getMustHaveTechnologies() != null && !(company.getMustHaveTechnologies().isEmpty())){
+                for(String skill : company.getMustHaveTechnologies()){
+                    predicates.add(criteriaBuilder.like(root.get("mustHaveTechnologies"), skill));
+                }
+            }
 
             if(company.getNiceToHaveTechnologies() != null && !(company.getNiceToHaveTechnologies().isEmpty())){
                 predicates.add(criteriaBuilder.like(root.get("niceToHaveTechnologies"), "%" +company.getNiceToHaveTechnologies() + "%"));

@@ -45,13 +45,13 @@ public class Company {
     @CollectionTable(name="Must have",
     joinColumns = @JoinColumn(name = "companies_id"))
     @Column(name="Mandatory skills")
-    private Set<String> mustHaveTechnologies = new HashSet<>();
+    private Set<String> mustHaveTechnologies;
 
     @ElementCollection
     @CollectionTable(name="Nice to have",
     joinColumns = @JoinColumn(name="companies_id"))
     @Column(name="Nice to have skills")
-    private Set<String> niceToHaveTechnologies = new HashSet<>();
+    private Set<String> niceToHaveTechnologies;
 
     @NotNull
     @Column(name= "Did they answer?")
